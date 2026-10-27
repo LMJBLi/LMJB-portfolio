@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品索引 · 李家起 / Works</title>
+    <meta name="description" content="六组作品：平面设计、游戏策划、非线性编辑、场景美术、课程作品与其他视觉美术。" />
+    <meta name="theme-color" content="#f3f0e8" />
+    <meta property="og:title" content="作品索引 · 李家起 / Works" />
+    <meta property="og:description" content="六组作品：平面设计、游戏策划、非线性编辑、场景美术、课程作品与其他视觉美术。" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <style>
+      #particle-bg {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* --- 卡片基础结构 --- */
+      #main .work-card {
+        position: relative !important;
+        display: block !important;
+        overflow: hidden !important;
+        transform: translateZ(0);
+      }
+
+      #main .work-card__media {
+        display: block !important;
+        position: relative !important;
+        overflow: hidden !important;
+        width: 100%;
+      }
+
+      #main .work-card__media img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      /* --- 底部渐变遮罩 --- */
+      #main .work-card::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.42) 45%,
+          transparent 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* --- 文字浮层 --- */
+      #main .work-card__body {
+        position: absolute !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: 2 !important;
+        padding: 24px 22px 22px !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+        color: #fff !important;
+        background: transparent !important;
+      }
+
+      #main .work-card__body * {
+        color: #fff !important;
+      }
+
+      /* --- 默认：英文名 + 数量隐藏并下移 --- */
+      #main .work-card__en,
+      #main .work-card__count {
+        opacity: 0 !important;
+        transform: translateY(14px) !important;
+      }
+
+      /* 触摸设备：默认全显示 */
+      @media (hover: none) {
+        #main .work-card__en,
+        #main .work-card__count {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="page page--works">
+    <canvas id="particle-bg" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-head">
+      <div class="site-head__inner">
+        <a class="brand" href="./index.html" aria-label="李家起作品集首页">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">
+            <strong>LMJB</strong>
+            <small>李家起 · PORTFOLIO</small>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="主导航">
+          <a class="nav__link" href="./index.html"><span>01</span>主页</a>
+          <a class="nav__link is-active" href="./projects.html" aria-current="page"><span>02</span>作品</a>
+          <a class="nav__link" href="./contacts.html"><span>03</span>联系方式</a>
+        </nav>
+
+        <div class="site-head__tools">
+          <button class="theme-btn" type="button" aria-label="切换深浅色" aria-pressed="false">
+            <span class="theme-btn__icon" aria-hidden="true">◐</span>
+          </button>
+          <button class="menu-btn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <nav class="mobile-menu__nav" aria-label="移动端导航">
+        <a class="mobile-menu__link" href="./index.html"><span>01</span>主页</a>
+        <a class="mobile-menu__link is-active" href="./projects.html" aria-current="page"><span>02</span>作品</a>
+        <a class="mobile-menu__link" href="./contacts.html"><span>03</span>联系方式</a>
+      </nav>
+      <div class="mobile-menu__foot">
+        <a href="mailto:2437597827@qq.com">2437597827@qq.com</a>
+        <span>福建 · 厦门 / 福州</span>
+        <span>© 2026 李家起 · LMJB</span>
+      </div>
+    </div>
+
+    <main id="main">
+      <section class="page-head" aria-labelledby="works-title">
+        <div class="container page-head__grid">
+          <div>
+            <p class="eyebrow">INDEX / 06 PROJECTS</p>
+            <h1 class="page-title" id="works-title">作品索引<span class="page-title__en">SELECTED WORKS 2023 — 2026</span></h1>
+          </div>
+          <div class="page-head__aside">
+            <div>
+              <p class="page-lede">六组作品，从海报与字体到场景与游戏原型。每一组都保留了过程稿：线稿、白盒、界面截图，以及那些最终没有用上的尝试。</p>
+              <p class="page-lede">点击任意一组进入完整档案。</p>
+            </div>
+            <p class="page-count">06<span>PROJECTS</span></p>
+          </div>
+        </div>
+        <span class="page-head__deco" aria-hidden="true"></span>
+      </section>
+
+      <section class="section works-index" aria-label="全部作品">
+        <div class="container">
+          <div class="works-index__note">
+            <p>FILTER — ALL / 2023—2025</p>
+            <p>38 FILES · 06 CATEGORIES</p>
+          </div>
+          <div class="work-grid">
+            <a class="work-card" href="./project-1.html" data-reveal style="transition-delay:0ms">
+            <span class="work-card__media">
+              <img src="./img/work/p1/poster-landscape.jpg" alt="《苍猊》横版字体海报，篆隶风格汉字铺满深灰底" width="1800" height="1273" loading="lazy" decoding="async" />
+              <span class="work-card__tag">01 / GRAPHIC DESIGN</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">01</span>
+              <span>
+                <h3 class="work-card__title">平面设计</h3>
+                <span class="work-card__en">GRAPHIC DESIGN</span>
+              </span>
+              <span class="work-card__count">07 PIECES</span>
+            </div>
+          </a>
+          <a class="work-card" href="./project-2.html" data-reveal style="transition-delay:80ms">
+            <span class="work-card__media">
+              <img src="./img/work/p2/fps-yard.jpg" alt="第一人称游戏中的庭院场景，阳光穿过树影" width="1800" height="979" loading="lazy" decoding="async" />
+              <span class="work-card__tag">02 / GAME DESIGN</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">02</span>
+              <span>
+                <h3 class="work-card__title">游戏策划</h3>
+                <span class="work-card__en">GAME DESIGN</span>
+              </span>
+              <span class="work-card__count">08 PIECES</span>
+            </div>
+          </a>
+          <a class="work-card" href="./project-3.html" data-reveal style="transition-delay:0ms">
+            <span class="work-card__media">
+              <img src="./img/work/p3/ue-corridor-deer.jpg" alt="白色车厢场景中出现一只鹿，超现实画面" width="1269" height="713" loading="lazy" decoding="async" />
+              <span class="work-card__tag">03 / POST-PRODUCTION</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">03</span>
+              <span>
+                <h3 class="work-card__title">非线性编辑</h3>
+                <span class="work-card__en">POST-PRODUCTION</span>
+              </span>
+              <span class="work-card__count">03 PIECES</span>
+            </div>
+          </a>
+          <a class="work-card" href="./project-4.html" data-reveal style="transition-delay:80ms">
+            <span class="work-card__media">
+              <img src="./img/work/p4/garden-pavilion.jpg" alt="苏南园林场景，水池、亭子与假山" width="1037" height="519" loading="lazy" decoding="async" />
+              <span class="work-card__tag">04 / ENVIRONMENT ART</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">04</span>
+              <span>
+                <h3 class="work-card__title">场景美术</h3>
+                <span class="work-card__en">ENVIRONMENT ART</span>
+              </span>
+              <span class="work-card__count">07 PIECES</span>
+            </div>
+          </a>
+          <a class="work-card" href="./project-5.html" data-reveal style="transition-delay:0ms">
+            <span class="work-card__media">
+              <img src="./img/work/p5/illustration-crowd.jpg" alt="黑白插画，人群围观中央的机械装置" width="1800" height="1298" loading="lazy" decoding="async" />
+              <span class="work-card__tag">05 / COURSEWORK</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">05</span>
+              <span>
+                <h3 class="work-card__title">课程作品</h3>
+                <span class="work-card__en">COURSEWORK</span>
+              </span>
+              <span class="work-card__count">05 PIECES</span>
+            </div>
+          </a>
+          <a class="work-card" href="./project-6.html" data-reveal style="transition-delay:80ms">
+            <span class="work-card__media">
+              <img src="./img/work/p6/pixel-poster.jpg" alt="像素风游戏海报，OUTER WILDS 字样与角色" width="1800" height="1348" loading="lazy" decoding="async" />
+              <span class="work-card__tag">06 / VISUAL EXPERIMENTS</span>
+            </span>
+            <div class="work-card__body">
+              <span class="work-card__no" aria-hidden="true">06</span>
+              <span>
+                <h3 class="work-card__title">其他视觉美术</h3>
+                <span class="work-card__en">VISUAL EXPERIMENTS</span>
+              </span>
+              <span class="work-card__count">08 PIECES</span>
+            </div>
+          </a>
+          </div>
+        </div>
+      </section>
+
+
+    <section class="cta" id="contact" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta__inner">
+          <div>
+            <p class="eyebrow eyebrow--light">CONTACT / 保持联系</p>
+            <h2 class="cta__title" id="cta-title">有项目、实习，<br />或只是想聊聊？<em>随时。</em></h2>
+            <a class="cta__mail" href="mailto:2437597827@qq.com">2437597827@qq.com</a>
+          </div>
+          <div class="cta__aside">
+            <strong>BASED IN</strong>
+            福建 · 厦门 / 福州<br />
+            开放实习与项目合作<br />
+            通常 24 小时内回复
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__top">
+          <a class="footer__brand" href="./index.html" aria-label="返回首页">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span>
+              <strong>LMJB</strong>
+              <small>李家起 · PORTFOLIO 2023 — 2026</small>
+            </span>
+          </a>
+          <nav class="footer__nav" aria-label="页脚导航">
+            <a href="./index.html">主页</a>
+            <a href="./projects.html">作品</a>
+            <a href="./contacts.html">联系方式</a>
+            <a href="mailto:2437597827@qq.com">Email</a>
+          </nav>
+          <ul class="social">
+            <li><a href="#!" aria-label="GitHub" target="_blank" rel="noreferrer"><img src="./img/icons/gitHub.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+            <li><a href="#!" aria-label="Instagram" target="_blank" rel="noreferrer"><img src="./img/icons/instagram.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+            <li><a href="#!" aria-label="LinkedIn" target="_blank" rel="noreferrer"><img src="./img/icons/linkedIn.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+          </ul>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2026 李家起 · 保留所有权利</span>
+          <div class="footer__meta">
+            <span>PORTFOLIO 2023 — 2026</span>
+            <span>福建 · 厦门 / 福州</span>
+            <span>DESIGNED &amp; BUILT BY LMJB</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 底部底图：替换 img/bottom-map.png 即可（建议 2:1 横图） -->
+      <div class="baseplate">
+        <img id="bottom-map" src="./img/bottom-map.png" alt="像素风格游戏世界地图" width="1535" height="703" loading="lazy" decoding="async" />
+        <div class="baseplate__reticle" aria-hidden="true">
+          <span class="baseplate__ring"></span>
+          <span class="baseplate__center"></span>
+        </div>
+        <span class="baseplate__corner baseplate__corner--tl" aria-hidden="true"></span>
+        <span class="baseplate__corner baseplate__corner--br" aria-hidden="true"></span>
+        <div class="baseplate__meta">
+          <span class="baseplate__label"><i aria-hidden="true"></i>BASE MAP / WORLD PLATE</span>
+          <span class="baseplate__note">2026 · LMJB</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="作品大图">
+      <div class="lightbox__bar">
+        <span class="lightbox__brand">LMJB / ARCHIVE</span>
+        <button class="lightbox__close" type="button" aria-label="关闭大图">关闭 <span aria-hidden="true">✕</span></button>
+      </div>
+      <div class="lightbox__stage">
+        <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="上一张">←</button>
+        <figure class="lightbox__figure">
+          <img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
+        </figure>
+        <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="下一张">→</button>
+      </div>
+      <div class="lightbox__foot">
+        <div class="lightbox__caption">
+          <span class="lightbox__caption-text"></span>
+          <span class="lightbox__caption-meta"></span>
+        </div>
+        <div class="lightbox__counter">01 <em>/</em> 01</div>
+      </div>
+    </div>
+
+    <noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
+    <script src="./js/main.js"></script>
+    <script>window.PARTICLE_BG_OVERRIDE = { count: 70, alpha: 0.25 };</script>
+    <script src="./js/particle-bg.js"></script>
+
+    <!-- =========================================================
+         作品卡片悬停 · JS 强制版
+         用 mouseenter/mouseleave 直接写内联样式 + important
+         优先级最高，不会被 main.css / main.js 覆盖
+         ========================================================= -->
+    <script>
+    (function () {
+      'use strict';
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      var EASE_IN  = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      var EASE_OUT = 'cubic-bezier(0.4, 0, 0.6, 1)';
+
+      document.querySelectorAll('#main .work-card').forEach(function (card) {
+        var img   = card.querySelector('.work-card__media img');
+        var title = card.querySelector('.work-card__title');
+        var no    = card.querySelector('.work-card__no');
+        var en    = card.querySelector('.work-card__en');
+        var count = card.querySelector('.work-card__count');
+
+        // 初始状态
+        card.style.setProperty('transition',
+          'transform .5s ' + EASE_OUT + ', box-shadow .5s ' + EASE_OUT, 'important');
+        if (img) {
+          img.style.setProperty('transition',
+            'transform .5s ' + EASE_OUT + ', filter .5s ease', 'important');
+        }
+
+        function onEnter() {
+          card.style.setProperty('transform', 'translateY(-10px)', 'important');
+          card.style.setProperty('box-shadow',
+            '0 18px 36px -18px rgba(0,0,0,.25), 0 36px 72px -36px rgba(0,0,0,.3)', 'important');
+          card.style.setProperty('transition',
+            'transform 1.2s ' + EASE_IN + ', box-shadow 1.2s ' + EASE_IN, 'important');
+
+          if (img) {
+            img.style.setProperty('transform', 'scale(1.15)', 'important');
+            img.style.setProperty('filter', 'brightness(.88) saturate(1.08)', 'important');
+            img.style.setProperty('transition',
+              'transform 1.4s ' + EASE_IN + ', filter 1s ease', 'important');
+          }
+          if (title) {
+            title.style.setProperty('transform', 'translateY(-3px)', 'important');
+            title.style.setProperty('transition', 'transform .9s ' + EASE_IN, 'important');
+          }
+          if (no) {
+            no.style.setProperty('transform', 'translateY(-3px)', 'important');
+            no.style.setProperty('transition', 'transform .9s ' + EASE_IN, 'important');
+          }
+          if (en) {
+            en.style.setProperty('opacity', '1', 'important');
+            en.style.setProperty('transform', 'translateY(0)', 'important');
+            en.style.setProperty('transition',
+              'transform .9s ' + EASE_IN + ' .12s, opacity .7s ease .12s', 'important');
+          }
+          if (count) {
+            count.style.setProperty('opacity', '1', 'important');
+            count.style.setProperty('transform', 'translateY(0)', 'important');
+            count.style.setProperty('transition',
+              'transform .9s ' + EASE_IN + ' .22s, opacity .7s ease .22s', 'important');
+          }
+        }
+
+        function onLeave() {
+          card.style.setProperty('transform', 'translateY(0)', 'important');
+          card.style.setProperty('box-shadow', 'none', 'important');
+          card.style.setProperty('transition',
+            'transform .5s ' + EASE_OUT + ', box-shadow .5s ease', 'important');
+
+          if (img) {
+            img.style.setProperty('transform', 'scale(1)', 'important');
+            img.style.setProperty('filter', 'none', 'important');
+            img.style.setProperty('transition',
+              'transform .5s ' + EASE_OUT + ', filter .5s ease', 'important');
+          }
+          if (title) title.style.setProperty('transform', 'translateY(0)', 'important');
+          if (no)    no.style.setProperty('transform', 'translateY(0)', 'important');
+          if (en) {
+            en.style.setProperty('opacity', '0', 'important');
+            en.style.setProperty('transform', 'translateY(14px)', 'important');
+          }
+          if (count) {
+            count.style.setProperty('opacity', '0', 'important');
+            count.style.setProperty('transform', 'translateY(14px)', 'important');
+          }
+        }
+
+        card.addEventListener('mouseenter', onEnter);
+        card.addEventListener('mouseleave', onLeave);
+        // 触摸设备：直接显示所有信息
+        card.addEventListener('touchstart', function () {
+          if (en)    en.style.setProperty('opacity', '1', 'important');
+          if (count) count.style.setProperty('opacity', '1', 'important');
+        }, { passive: true });
+      });
+    })();
+    </script>
+  </body>
+</html>

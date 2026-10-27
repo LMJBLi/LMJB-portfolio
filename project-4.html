@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>场景美术 · 作品 04 — 李家起</title>
+    <meta name="description" content="场景美术 / ENVIRONMENT ART：场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。" />
+    <meta name="theme-color" content="#f3f0e8" />
+    <meta property="og:title" content="场景美术 · 作品 04 — 李家起" />
+    <meta property="og:description" content="场景美术 / ENVIRONMENT ART：场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <style>
+      #particle-bg {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        pointer-events: none;
+        z-index: -1;
+      }
+    </style>
+      <style id="detail-hover-style">
+/* =========================================================
+         详情页作品卡 .piece · 悬停效果
+         ========================================================= */
+      #main .piece {
+        position: relative !important;
+        display: block !important;
+        overflow: hidden !important;
+        border-radius: 6px;
+        transition: transform .5s cubic-bezier(.4,0,.6,1), box-shadow .5s ease !important;
+        will-change: transform;
+        transform: translateZ(0);
+      }
+      #main .piece:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 18px 36px -18px rgba(0,0,0,.22), 0 36px 72px -36px rgba(0,0,0,.28) !important;
+        transition: transform 1.2s cubic-bezier(.16,1,.3,1), box-shadow 1.2s cubic-bezier(.16,1,.3,1) !important;
+      }
+      html.dark #main .piece:hover {
+        box-shadow: 0 18px 36px -18px rgba(0,0,0,.6), 0 36px 72px -36px rgba(0,0,0,.7) !important;
+      }
+      #main .piece__media {
+        display: block !important;
+        position: relative !important;
+        overflow: hidden !important;
+        width: 100%;
+      }
+      #main .piece__media img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        transition: transform .5s cubic-bezier(.4,0,.6,1), filter .5s ease !important;
+        will-change: transform;
+        backface-visibility: hidden;
+        transform: scale(1) !important;
+      }
+      #main .piece:hover .piece__media img {
+        transform: scale(1.15) !important;
+        filter: brightness(.88) saturate(1.08) !important;
+        transition: transform 1.4s cubic-bezier(.16,1,.3,1), filter 1s ease !important;
+      }
+      #main .piece::after {
+        content: "";
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: 55%;
+        background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.4) 45%, transparent 100%);
+        pointer-events: none;
+        z-index: 1;
+        transition: opacity 1s ease;
+        opacity: 1;
+      }
+      #main .piece:hover::after { opacity: .9; }
+      #main .piece__cap {
+        position: absolute !important;
+        left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 2 !important;
+        padding: 20px 20px 18px !important;
+        margin: 0 !important;
+        color: #fff !important;
+        background: transparent !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+      }
+      #main .piece__cap * { color: #fff !important; }
+      #main .piece__cap p {
+        opacity: 0 !important;
+        transform: translateY(12px) !important;
+        transition: transform .9s cubic-bezier(.16,1,.3,1), opacity .7s ease !important;
+      }
+      #main .piece__cap .piece__num,
+      #main .piece__cap h3 {
+        transition: transform .9s cubic-bezier(.16,1,.3,1) !important;
+      }
+      @media (hover: hover) {
+        #main .piece:hover .piece__num,
+        #main .piece:hover .piece__cap h3 { transform: translateY(-3px) !important; }
+        #main .piece:hover .piece__cap p {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition-delay: .12s !important;
+        }
+      }
+      @media (hover: none) {
+        #main .piece__cap p { opacity: 1 !important; transform: none !important; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #main .piece, #main .piece__media img, #main .piece__cap p,
+        #main .piece__cap .piece__num, #main .piece__cap h3 { transition: none !important; }
+        #main .piece:hover, #main .piece:hover .piece__media img,
+        #main .piece:hover .piece__cap p, #main .piece:hover .piece__cap h3,
+        #main .piece:hover .piece__cap .piece__num { transform: none !important; filter: none !important; }
+      }
+
+      /* --- gallery-feature 主视觉同样加强 --- */
+      #main .gallery-feature { position: relative; }
+      #main .gallery-feature__media img {
+        transition: transform .5s cubic-bezier(.4,0,.6,1), filter .5s ease !important;
+      }
+      #main .gallery-feature:hover .gallery-feature__media img {
+        transform: scale(1.06) !important;
+        filter: brightness(.94) !important;
+        transition: transform 1.4s cubic-bezier(.16,1,.3,1), filter 1s ease !important;
+      }
+    </style>
+  </head>
+  <body class="page page--project project-4">
+    <canvas id="particle-bg" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-head">
+      <div class="site-head__inner">
+        <a class="brand" href="./index.html" aria-label="李家起作品集首页">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">
+            <strong>LMJB</strong>
+            <small>李家起 · PORTFOLIO</small>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="主导航">
+          <a class="nav__link" href="./index.html"><span>01</span>主页</a>
+          <a class="nav__link is-active" href="./projects.html" aria-current="page"><span>02</span>作品</a>
+          <a class="nav__link" href="./contacts.html"><span>03</span>联系方式</a>
+        </nav>
+
+        <div class="site-head__tools">
+          <button class="theme-btn" type="button" aria-label="切换深浅色" aria-pressed="false">
+            <span class="theme-btn__icon" aria-hidden="true">◐</span>
+          </button>
+          <button class="menu-btn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <nav class="mobile-menu__nav" aria-label="移动端导航">
+        <a class="mobile-menu__link" href="./index.html"><span>01</span>主页</a>
+        <a class="mobile-menu__link is-active" href="./projects.html" aria-current="page"><span>02</span>作品</a>
+        <a class="mobile-menu__link" href="./contacts.html"><span>03</span>联系方式</a>
+      </nav>
+      <div class="mobile-menu__foot">
+        <a href="mailto:2437597827@qq.com">2437597827@qq.com</a>
+        <span>福建 · 厦门 / 福州</span>
+        <span>© 2026 李家起 · LMJB</span>
+      </div>
+    </div>
+
+    <main id="main">
+      <section class="project-head">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="./projects.html">作品</a>
+            <span>/</span>
+            <span>04</span>
+            <span>/</span>
+            <span>场景美术</span>
+          </nav>
+
+          <div class="project-head__grid">
+            <div>
+              <p class="eyebrow">PROJECT 04 / 06</p>
+              <h1 class="project-title">场景美术</h1>
+              <span class="project-title__en">ENVIRONMENT ART</span>
+            </div>
+            <div>
+              <p class="project-head__lede">场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。</p>
+              <div class="statement__tags" style="margin-top:22px"><span class="tag">场景重建</span><span class="tag">光影</span><span class="tag">空间叙事</span></div>
+            </div>
+          </div>
+
+          <dl class="project-meta">
+            <div>
+              <dt>Year</dt>
+              <dd>2024 — 2025</dd>
+            </div>
+            <div>
+              <dt>Type</dt>
+              <dd>场景设计 / 空间叙事</dd>
+            </div>
+            <div>
+              <dt>Tools</dt>
+              <dd>Unreal Engine · Photoshop</dd>
+            </div>
+            <div>
+              <dt>Pieces</dt>
+              <dd>07 件 / 04 of 06</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <figure class="project-lead" style="--lead-ar: 1037 / 519" data-reveal>
+        <div class="project-lead__frame">
+          <img
+            src="./img/work/p4/garden-pavilion.jpg"
+            alt="苏南园林场景，水池、亭子与假山"
+            width="1037"
+            height="519"
+            fetchpriority="high"
+          />
+        </div>
+        <figcaption>
+          <span>苏南园林 · 场景重建 / Unreal Engine</span>
+          <span>ENVIRONMENT ART / 2024 — 2025</span>
+        </figcaption>
+      </figure>
+
+      <div class="container project-body">
+        <section class="statement" aria-label="项目陈述">
+          <p class="statement__label">Statement</p>
+          <div>
+            <blockquote>光落在哪里，故事就从哪里开始。</blockquote>
+            <p class="statement__text">场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。</p>
+          </div>
+        </section>
+
+        <div class="gallery-head">
+          <h2>全部作品</h2>
+          <p>ALL PIECES / 07 FILES</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+          <div class="gallery-row" style="display:contents"><figure class="piece" style="--span:12;--ar:2 / 1" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/garden-pavilion.jpg"
+                data-lightbox data-full="./img/work/p4/garden-pavilion.jpg" data-caption="苏南园林 · 场景重建" data-meta="Unreal Engine / 水体、假山与亭榭 · PIECE 01"
+                aria-label="查看大图：苏南园林 · 场景重建"
+              >
+                <img
+                  src="./img/work/p4/garden-pavilion.jpg"
+                  alt="苏南园林场景，池水倒映亭子与假山"
+                  width="1037"
+                  height="519"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">01</span>
+                <span>
+                  <h3>苏南园林 · 场景重建</h3>
+                  <p>Unreal Engine / 水体、假山与亭榭</p>
+                </span>
+              </figcaption>
+            </figure></div>
+          <div class="gallery-row" style="display:contents"><figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/forest-ancient-tree.jpg"
+                data-lightbox data-full="./img/work/p4/forest-ancient-tree.jpg" data-caption="林间 · 古树与地形" data-meta="自然环境 / 植被与雾 · PIECE 02"
+                aria-label="查看大图：林间 · 古树与地形"
+              >
+                <img
+                  src="./img/work/p4/forest-ancient-tree.jpg"
+                  alt="游戏森林场景，古树与草地"
+                  width="1266"
+                  height="694"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">02</span>
+                <span>
+                  <h3>林间 · 古树与地形</h3>
+                  <p>自然环境 / 植被与雾</p>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/scene-blueprint.jpg"
+                data-lightbox data-full="./img/work/p4/scene-blueprint.jpg" data-caption="关卡蓝图 · 场景搭建" data-meta="Unreal Engine / 模块与灯光 · PIECE 03"
+                aria-label="查看大图：关卡蓝图 · 场景搭建"
+              >
+                <img
+                  src="./img/work/p4/scene-blueprint.jpg"
+                  alt="Unreal Engine 蓝图编辑器中的场景搭建界面"
+                  width="1134"
+                  height="759"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">03</span>
+                <span>
+                  <h3>关卡蓝图 · 场景搭建</h3>
+                  <p>Unreal Engine / 模块与灯光</p>
+                </span>
+              </figcaption>
+            </figure></div>
+          <div class="gallery-row" style="display:contents"><figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/scene-platformer.jpg"
+                data-lightbox data-full="./img/work/p4/scene-platformer.jpg" data-caption="平台关卡 · 场景" data-meta="2D 空间 / 材质与层次 · PIECE 04"
+                aria-label="查看大图：平台关卡 · 场景"
+              >
+                <img
+                  src="./img/work/p4/scene-platformer.jpg"
+                  alt="2D 平台游戏场景，绿色地下空间"
+                  width="1800"
+                  height="1041"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">04</span>
+                <span>
+                  <h3>平台关卡 · 场景</h3>
+                  <p>2D 空间 / 材质与层次</p>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/tile-room-01.jpg"
+                data-lightbox data-full="./img/work/p4/tile-room-01.jpg" data-caption="白色房间 · 光照" data-meta="室内白盒 / 聚光与投影 · PIECE 05"
+                aria-label="查看大图：白色房间 · 光照"
+              >
+                <img
+                  src="./img/work/p4/tile-room-01.jpg"
+                  alt="白色瓷砖房间场景，聚光灯照向角色"
+                  width="1800"
+                  height="1012"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">05</span>
+                <span>
+                  <h3>白色房间 · 光照</h3>
+                  <p>室内白盒 / 聚光与投影</p>
+                </span>
+              </figcaption>
+            </figure></div>
+          <div class="gallery-row" style="display:contents"><figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/tile-room-02.jpg"
+                data-lightbox data-full="./img/work/p4/tile-room-02.jpg" data-caption="白色房间 · 构图" data-meta="室内白盒 / 开口与动线 · PIECE 06"
+                aria-label="查看大图：白色房间 · 构图"
+              >
+                <img
+                  src="./img/work/p4/tile-room-02.jpg"
+                  alt="白色瓷砖房间场景，墙上开口透光"
+                  width="1800"
+                  height="1012"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">06</span>
+                <span>
+                  <h3>白色房间 · 构图</h3>
+                  <p>室内白盒 / 开口与动线</p>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="piece" style="--span:6;--ar:16 / 9" data-reveal>
+              <a
+                class="piece__media"
+                href="./img/work/p4/elevator-night.gif"
+                data-lightbox data-full="./img/work/p4/elevator-night.gif" data-caption="夜间电梯 · 动态场景" data-meta="GIF 动态 / 灯光与空间引导 · PIECE 07"
+                aria-label="查看大图：夜间电梯 · 动态场景"
+              >
+                <img
+                  src="./img/work/p4/elevator-night.gif"
+                  alt="夜间电梯厅场景动态影像"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="piece__badge">GIF</span>
+                <span class="piece__zoom" aria-hidden="true">↗</span>
+              </a>
+              <figcaption class="piece__cap">
+                <span class="piece__num">07</span>
+                <span>
+                  <h3>夜间电梯 · 动态场景</h3>
+                  <p>GIF 动态 / 灯光与空间引导</p>
+                </span>
+              </figcaption>
+            </figure></div>
+        </div>
+      </div>
+
+      <section class="project-nav" aria-label="项目导航">
+        <div class="container">
+          <div class="project-nav__inner">
+            <a href="./project-3.html">
+              <small>← PREVIOUS / 上一组</small>
+              <strong>非线性编辑</strong>
+              <em>POST-PRODUCTION</em>
+            </a>
+            <a href="./project-5.html">
+              <small>NEXT / 下一组 →</small>
+              <strong>课程作品</strong>
+              <em>COURSEWORK</em>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__top">
+          <a class="footer__brand" href="./index.html" aria-label="返回首页">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span>
+              <strong>LMJB</strong>
+              <small>李家起 · PORTFOLIO 2023 — 2026</small>
+            </span>
+          </a>
+          <nav class="footer__nav" aria-label="页脚导航">
+            <a href="./index.html">主页</a>
+            <a href="./projects.html">作品</a>
+            <a href="./contacts.html">联系方式</a>
+            <a href="mailto:2437597827@qq.com">Email</a>
+          </nav>
+          <ul class="social">
+            <li><a href="#!" aria-label="GitHub" target="_blank" rel="noreferrer"><img src="./img/icons/gitHub.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+            <li><a href="#!" aria-label="Instagram" target="_blank" rel="noreferrer"><img src="./img/icons/instagram.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+            <li><a href="#!" aria-label="LinkedIn" target="_blank" rel="noreferrer"><img src="./img/icons/linkedIn.svg" alt="" width="18" height="18" loading="lazy" /></a></li>
+          </ul>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2026 李家起 · 保留所有权利</span>
+          <div class="footer__meta">
+            <span>PORTFOLIO 2023 — 2026</span>
+            <span>福建 · 厦门 / 福州</span>
+            <span>DESIGNED &amp; BUILT BY LMJB</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 底部底图：替换 img/bottom-map.png 即可（建议 2:1 横图） -->
+      <div class="baseplate">
+        <img id="bottom-map" src="./img/bottom-map.png" alt="像素风格游戏世界地图" width="1535" height="703" loading="lazy" decoding="async" />
+        <div class="baseplate__reticle" aria-hidden="true">
+          <span class="baseplate__ring"></span>
+          <span class="baseplate__center"></span>
+        </div>
+        <span class="baseplate__corner baseplate__corner--tl" aria-hidden="true"></span>
+        <span class="baseplate__corner baseplate__corner--br" aria-hidden="true"></span>
+        <div class="baseplate__meta">
+          <span class="baseplate__label"><i aria-hidden="true"></i>BASE MAP / WORLD PLATE</span>
+          <span class="baseplate__note">2026 · LMJB</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="作品大图">
+      <div class="lightbox__bar">
+        <span class="lightbox__brand">LMJB / ARCHIVE</span>
+        <button class="lightbox__close" type="button" aria-label="关闭大图">关闭 <span aria-hidden="true">✕</span></button>
+      </div>
+      <div class="lightbox__stage">
+        <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="上一张">←</button>
+        <figure class="lightbox__figure">
+          <img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
+        </figure>
+        <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="下一张">→</button>
+      </div>
+      <div class="lightbox__foot">
+        <div class="lightbox__caption">
+          <span class="lightbox__caption-text"></span>
+          <span class="lightbox__caption-meta"></span>
+        </div>
+        <div class="lightbox__counter">01 <em>/</em> 01</div>
+      </div>
+    </div>
+
+    <noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
+    <script src="./js/main.js"></script>
+    <script>window.PARTICLE_BG_OVERRIDE = { count: 45, alpha: 0.22 };</script>
+    <script src="./js/particle-bg.js"></script>
+  
+    <script id="detail-hover-script">
+(function () {
+      'use strict';
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var EASE_IN = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      var EASE_OUT = 'cubic-bezier(0.4, 0, 0.6, 1)';
+      document.querySelectorAll('#main .piece').forEach(function (piece) {
+        var img = piece.querySelector('.piece__media img');
+        var num = piece.querySelector('.piece__num');
+        var h3 = piece.querySelector('.piece__cap h3');
+        var p = piece.querySelector('.piece__cap p');
+        piece.style.setProperty('transition', 'transform .5s ' + EASE_OUT + ', box-shadow .5s ease', 'important');
+        if (img) img.style.setProperty('transition', 'transform .5s ' + EASE_OUT + ', filter .5s ease', 'important');
+        function onEnter() {
+          piece.style.setProperty('transform', 'translateY(-8px)', 'important');
+          piece.style.setProperty('box-shadow', '0 18px 36px -18px rgba(0,0,0,.25), 0 36px 72px -36px rgba(0,0,0,.3)', 'important');
+          piece.style.setProperty('transition', 'transform 1.2s ' + EASE_IN + ', box-shadow 1.2s ' + EASE_IN, 'important');
+          if (img) {
+            img.style.setProperty('transform', 'scale(1.15)', 'important');
+            img.style.setProperty('filter', 'brightness(.88) saturate(1.08)', 'important');
+            img.style.setProperty('transition', 'transform 1.4s ' + EASE_IN + ', filter 1s ease', 'important');
+          }
+          if (num) num.style.setProperty('transform', 'translateY(-3px)', 'important');
+          if (h3) h3.style.setProperty('transform', 'translateY(-3px)', 'important');
+          if (p) {
+            p.style.setProperty('opacity', '1', 'important');
+            p.style.setProperty('transform', 'translateY(0)', 'important');
+            p.style.setProperty('transition', 'transform .9s ' + EASE_IN + ' .12s, opacity .7s ease .12s', 'important');
+          }
+        }
+        function onLeave() {
+          piece.style.setProperty('transform', 'translateY(0)', 'important');
+          piece.style.setProperty('box-shadow', 'none', 'important');
+          piece.style.setProperty('transition', 'transform .5s ' + EASE_OUT + ', box-shadow .5s ease', 'important');
+          if (img) {
+            img.style.setProperty('transform', 'scale(1)', 'important');
+            img.style.setProperty('filter', 'none', 'important');
+            img.style.setProperty('transition', 'transform .5s ' + EASE_OUT + ', filter .5s ease', 'important');
+          }
+          if (num) num.style.setProperty('transform', 'translateY(0)', 'important');
+          if (h3) h3.style.setProperty('transform', 'translateY(0)', 'important');
+          if (p) {
+            p.style.setProperty('opacity', '0', 'important');
+            p.style.setProperty('transform', 'translateY(12px)', 'important');
+          }
+        }
+        piece.addEventListener('mouseenter', onEnter);
+        piece.addEventListener('mouseleave', onLeave);
+        piece.addEventListener('touchstart', function () {
+          if (p) p.style.setProperty('opacity', '1', 'important');
+        }, { passive: true });
+      });
+    })();
+    </script>
+  </body>
+</html>
