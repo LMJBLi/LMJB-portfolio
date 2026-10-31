@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>平面设计 · 作品 01 — 李家起</title>
     <meta name="description" content="平面设计 / GRAPHIC DESIGN：从汉字结构到场景光影的一组视觉练习。" />
-    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="theme-color" content="#0b0b0a" />
     <meta property="og:title" content="平面设计 · 作品 01 — 李家起" />
     <meta property="og:description" content="平面设计 / GRAPHIC DESIGN：从汉字结构到场景光影的一组视觉练习。" />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('lmjb-theme');var d=q?q==='dark':(s?s==='dark':true);if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
     <style>
       #particle-bg { position: fixed; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: -1; }
 
@@ -121,6 +121,7 @@
         transition: transform 1.4s cubic-bezier(.16,1,.3,1), filter 1s ease !important;
       }
     </style>
+      <link rel="stylesheet" href="./css/v3.css" />
   </head>
   <body class="page page--project project-1">
     <canvas id="particle-bg" aria-hidden="true"></canvas>
@@ -377,5 +378,6 @@
       });
     })();
     </script>
+      <script src="./js/v3.js"></script>
   </body>
 </html>

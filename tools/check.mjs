@@ -1,14 +1,12 @@
 // 页面质量检查 + 关键交互截图（需 Edge 远程调试端口 9222）
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const PORT = Number(process.env.CDP_PORT || 9222);
-const OUT = 'D:\\Table\\DSH_Test\\_ref\\shots';
-const BASE =
-  process.env.SITE_BASE ||
-  'file:///D:/Table/DSH_Test/portfolio-for-everyone-main';
-const ROOT =
-  process.env.SITE_ROOT || 'D:\\Table\\DSH_Test\\portfolio-for-everyone-main';
+const ROOT = process.env.SITE_ROOT || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const BASE = process.env.SITE_BASE || 'file:///' + ROOT.replace(/\\/g, '/');
+const OUT = process.env.SHOT_OUT || path.join(ROOT, '..', '_ref', 'shots');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const consoleErrors = [];

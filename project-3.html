@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>非线性编辑 · 作品 03 — 李家起</title>
     <meta name="description" content="非线性编辑 / POST-PRODUCTION：从动画时间轴到引擎内实时镜头，这一组关注「剪辑」如何在时间与空间之间建立节奏。" />
-    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="theme-color" content="#0b0b0a" />
     <meta property="og:title" content="非线性编辑 · 作品 03 — 李家起" />
     <meta property="og:description" content="非线性编辑 / POST-PRODUCTION：从动画时间轴到引擎内实时镜头，这一组关注「剪辑」如何在时间与空间之间建立节奏。" />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('lmjb-theme');var d=q?q==='dark':(s?s==='dark':true);if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
     <style>
       #particle-bg { position: fixed; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: -1; }
       #main .piece { position: relative !important; display: block !important; overflow: hidden !important; border-radius: 6px; transition: transform .5s cubic-bezier(.4,0,.6,1), box-shadow .5s ease !important; will-change: transform; transform: translateZ(0); }
@@ -39,6 +39,7 @@
         #main .piece:hover, #main .piece:hover .piece__media img, #main .piece:hover .piece__cap p, #main .piece:hover .piece__cap h3, #main .piece:hover .piece__cap .piece__num { transform: none !important; filter: none !important; }
       }
     </style>
+      <link rel="stylesheet" href="./css/v3.css" />
   </head>
   <body class="page page--project project-3">
     <canvas id="particle-bg" aria-hidden="true"></canvas>
@@ -267,5 +268,6 @@
       });
     })();
     </script>
+      <script src="./js/v3.js"></script>
   </body>
 </html>

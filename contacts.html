@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>联系方式 · 李家起 / Contact</title>
     <meta name="description" content="联系李家起：邮箱 2437597827@qq.com，电话 +173 5929 4104，福建厦门。" />
-    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="theme-color" content="#0b0b0a" />
     <meta property="og:title" content="联系方式 · 李家起 / Contact" />
     <meta property="og:description" content="联系李家起：邮箱 2437597827@qq.com，电话 +173 5929 4104，福建厦门。" />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('lmjb-theme');var d=q?q==='dark':(s?s==='dark':true);if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
     <style>
       #particle-bg {
         position: fixed;
@@ -24,6 +24,7 @@
         z-index: -1;
       }
     </style>
+      <link rel="stylesheet" href="./css/v3.css" />
   </head>
   <body class="page page--contacts">
     <canvas id="particle-bg" aria-hidden="true"></canvas>
@@ -193,5 +194,6 @@
     <script src="./js/main.js"></script>
     <script>window.PARTICLE_BG_OVERRIDE = { count: 110, alpha: 0.32 };</script>
     <script src="./js/particle-bg.js"></script>
+      <script src="./js/v3.js"></script>
   </body>
 </html>

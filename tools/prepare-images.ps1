@@ -5,8 +5,8 @@
 
 Add-Type -AssemblyName System.Drawing
 
-$sourceRoot = 'D:\Table\DSH_Test\个人作品素材'
-$projectRoot = 'D:\Table\DSH_Test\portfolio-for-everyone-main'
+$projectRoot = Split-Path $PSScriptRoot -Parent
+$sourceRoot = Join-Path (Split-Path $projectRoot -Parent) '个人作品素材'
 $outputRoot = Join-Path $projectRoot 'img\work'
 
 $map = @(

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>场景美术 · 作品 04 — 李家起</title>
     <meta name="description" content="场景美术 / ENVIRONMENT ART：场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。" />
-    <meta name="theme-color" content="#f3f0e8" />
+    <meta name="theme-color" content="#0b0b0a" />
     <meta property="og:title" content="场景美术 · 作品 04 — 李家起" />
     <meta property="og:description" content="场景美术 / ENVIRONMENT ART：场景是情绪的容器。这一组从苏南园林、林间空地到室内白盒，尝试用光、材质与构图建立叙事：既是世界观的空间，也是镜头里的舞台。" />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('darkMode');var d=q?q==='dark':s==='dark';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('lmjb-theme');var d=q?q==='dark':(s?s==='dark':true);if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
     <style>
       #particle-bg {
         position: fixed;
@@ -130,6 +130,7 @@
         transition: transform 1.4s cubic-bezier(.16,1,.3,1), filter 1s ease !important;
       }
     </style>
+      <link rel="stylesheet" href="./css/v3.css" />
   </head>
   <body class="page page--project project-4">
     <canvas id="particle-bg" aria-hidden="true"></canvas>
@@ -583,5 +584,6 @@
       });
     })();
     </script>
+      <script src="./js/v3.js"></script>
   </body>
 </html>

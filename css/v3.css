@@ -1,0 +1,343 @@
+/* =========================================================
+   V3 — 深色优先 / 扁平编辑风 / 指针交互
+   在 main.css 与各页内联样式之后加载，用于统一覆盖
+   ========================================================= */
+
+/* ---------- dark-first palette ---------- */
+
+html.dark,
+body.dark {
+  --paper: #0b0b0a;
+  --paper-2: #111110;
+  --paper-3: #181816;
+  --ink: #f3efe7;
+  --ink-soft: #c8c1b5;
+  --muted: #9b9386;
+
+  --line: rgba(243, 239, 231, 0.13);
+  --line-strong: rgba(243, 239, 231, 0.3);
+
+  --red: #ff4a4a;
+  --red-deep: #ff6d6d;
+  --card: #111110;
+
+  --black: #070706;
+  --on-black: #f3efe7;
+
+  --shadow: none;
+  --shadow-soft: none;
+}
+
+html.dark body::before {
+  opacity: 0.022;
+  mix-blend-mode: screen;
+}
+
+/* ---------- flatter surfaces ---------- */
+
+.site-head {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.site-head.is-scrolled {
+  background: var(--paper);
+  border-color: var(--line);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.btn {
+  border-radius: 2px;
+  height: 50px;
+}
+
+.tag {
+  border-radius: 2px;
+}
+
+.about__tools span {
+  border-radius: 2px;
+}
+
+.theme-btn,
+.menu-btn {
+  border-radius: 2px;
+}
+
+.theme-btn:hover {
+  transform: none;
+  color: #fff;
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.menu-btn:hover {
+  border-color: var(--red);
+}
+
+.lightbox__nav,
+.lightbox__close {
+  border-radius: 2px;
+}
+
+.lightbox__nav:hover {
+  border-radius: 2px;
+}
+
+.hero__mini {
+  box-shadow: none;
+  border: 1px solid var(--line-strong);
+}
+
+.hero__mini:hover {
+  transform: translateY(-4px);
+}
+
+.hero__frame,
+.project-lead__frame,
+.gallery-feature__media {
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+
+.project-details__cover,
+.project-details {
+  box-shadow: none;
+}
+
+/* remove the old 3D lift; keep a restrained 4px shift */
+html body #main .work-card:hover,
+html body #main .piece:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: none !important;
+}
+
+html body #main .work-card,
+html body #main .piece {
+  border-radius: 0 !important;
+}
+
+html body #main .work-card__media,
+html body #main .piece__media {
+  border-radius: 0 !important;
+}
+
+html body #main .work-card__media img,
+html body #main .piece__media img {
+  border-radius: 0 !important;
+}
+
+/* ---------- image borders ---------- */
+
+.work-card__media,
+.piece__media {
+  border: 1px solid var(--line);
+  background: var(--paper-3);
+  transition: border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.work-card:hover .work-card__media,
+.piece:hover .piece__media {
+  border-color: var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+}
+
+.work-card__media img,
+.piece__media img {
+  transition: transform 1.2s var(--ease), filter 0.7s ease;
+}
+
+/* make the border readable when the image is bright */
+.work-card__media::before,
+.piece__media::before {
+  display: none;
+}
+
+/* ---------- unified card captions ---------- */
+
+html body #main .work-card__body {
+  display: grid !important;
+  grid-template-columns: 38px minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  justify-content: initial !important;
+  gap: 12px !important;
+  padding: 22px 20px 20px !important;
+}
+
+html body #main .work-card__body > span:nth-child(2) {
+  min-width: 0;
+}
+
+html body #main .work-card__title {
+  font-size: clamp(20px, 2vw, 27px) !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+}
+
+html body #main .work-card__no {
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+html body #main .work-card__count {
+  padding-bottom: 2px;
+  text-align: right;
+}
+
+/* ---------- pointer-reactive type ---------- */
+
+.type-distort {
+  --type-radius: 160px;
+}
+
+.type-char {
+  display: inline-block;
+  color: var(--ink);
+  transform: translate3d(var(--tx, 0), var(--ty, 0), 0)
+    rotate(var(--rot, 0deg)) scale(var(--sc, 1));
+  transition: transform 0.38s var(--ease), color 0.3s ease;
+  will-change: transform;
+}
+
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .type-char {
+    color: color-mix(
+      in srgb,
+      var(--red) calc(var(--pull, 0) * 100%),
+      var(--ink)
+    );
+  }
+}
+
+.type-distort.is-active .type-char {
+  transition: transform 0.08s linear, color 0.12s linear;
+}
+
+/* pointer spotlight, works for nested <em> too */
+.spotlight-text {
+  --spot-base: var(--ink);
+  --spot-accent: var(--red);
+  background-image: radial-gradient(
+    circle 170px at var(--spot-x, -999px) var(--spot-y, -999px),
+    var(--spot-accent) 0%,
+    var(--spot-base) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.spotlight-text em,
+.spotlight-text strong {
+  color: var(--red);
+  -webkit-text-fill-color: var(--red);
+}
+
+.cta .spotlight-text,
+.note-card .spotlight-text {
+  --spot-base: var(--on-black);
+  --spot-accent: var(--red);
+}
+
+.gallery-feature__panel .spotlight-text {
+  --spot-base: #ffffff;
+  --spot-accent: #ffd7d7;
+}
+
+.spotlight-text::selection {
+  background: var(--red);
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+/* ---------- pointer-reactive geometry ---------- */
+
+.hero::before,
+.page-head::before,
+.project-head::before,
+.contact-hero::before {
+  transform: translate3d(
+    calc(var(--pointer-x, 0) * 13px),
+    calc(var(--pointer-y, 0) * 9px),
+    0
+  );
+  transition: transform 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+/* ---------- small refinements ---------- */
+
+.section-head__title,
+.page-title,
+.project-title,
+.contact-title {
+  letter-spacing: -0.045em;
+}
+
+.project-head__lede,
+.page-lede {
+  text-wrap: pretty;
+}
+
+.hero__lede,
+.statement__text,
+.about__text {
+  text-wrap: pretty;
+}
+
+/* keyboard focus stays visible on flat surfaces */
+.work-card:focus-visible,
+.piece__media:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
+
+/* ---------- graceful fallbacks ---------- */
+
+@supports not (-webkit-background-clip: text) {
+  .spotlight-text {
+    background: none;
+    color: var(--ink);
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+@media (forced-colors: active) {
+  .spotlight-text {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+
+@media print {
+  .spotlight-text {
+    background: none;
+    color: #111;
+    -webkit-text-fill-color: #111;
+  }
+}
+
+@media (max-width: 900px) {
+  .type-char {
+    transform: none;
+    color: var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .page-head::before,
+  .project-head::before,
+  .contact-hero::before {
+    transform: none;
+  }
+
+  .type-char {
+    transform: none;
+    color: var(--ink);
+    transition: none;
+  }
+}

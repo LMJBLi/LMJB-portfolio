@@ -14,6 +14,8 @@
   function syncThemeUI() {
     const isDark = root.classList.contains('dark');
     body.classList.toggle('dark', isDark);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', isDark ? '#0b0b0a' : '#f3f0e8');
     if (themeBtn) {
       themeBtn.setAttribute('aria-pressed', String(isDark));
       themeBtn.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
@@ -28,7 +30,7 @@
     root.classList.toggle('dark', theme === 'dark');
     if (persist) {
       try {
-        localStorage.setItem('darkMode', theme);
+        localStorage.setItem('lmjb-theme', theme);
       } catch (err) {
         /* ignore */
       }
@@ -52,8 +54,8 @@
     themeBtn.addEventListener('click', toggleThemeWithFade);
   }
 
-  // 首次访问默认浅色；仅恢复用户手动选择过的主题
-  // 系统深色偏好不覆盖作品集的纸面主视觉
+  // 首次访问默认深色；仅恢复用户手动选择过的主题
+  // V3 使用独立键名，避免旧的浅色偏好覆盖新的默认深色
 
   function toggleThemeWithFade() {
     const next = root.classList.contains('dark') ? 'light' : 'dark';

@@ -4,12 +4,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const PORT = Number(process.env.CDP_PORT || 9222);
-const OUT = process.env.SHOT_OUT || 'D:\\Table\\DSH_Test\\_ref\\shots';
-const BASE =
-  process.env.SITE_BASE ||
-  'file:///D:/Table/DSH_Test/portfolio-for-everyone-main';
+const ROOT = process.env.SITE_ROOT || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const BASE = process.env.SITE_BASE || 'file:///' + ROOT.replace(/\\/g, '/');
+const OUT = process.env.SHOT_OUT || path.join(ROOT, '..', '_ref', 'shots');
 
 fs.mkdirSync(OUT, { recursive: true });
 
